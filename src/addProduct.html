@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajout de Produit</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100 p-10">
+    <div class="max-w-4xl mx-auto bg-white p-8 rounded shadow-md">
+        <h1 class="text-2xl font-bold mb-8">Ajouter un Produit</h1>
+        <form id="multiStepForm">
+            <!-- Infos du produit -->
+            <fieldset id="step1" class="mb-8">
+                <legend class="text-xl font-semibold mb-4">Infos du produit</legend>
+                <div class="mb-4">
+                    <label for="libelle" class="block text-sm font-medium text-gray-700">Libellé :</label>
+                    <input type="text" id="libelle" name="libelle"
+                        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" required>
+                </div>
+                <div class="mb-4">
+                    <label for="prix" class="block text-sm font-medium text-gray-700">Prix du produit :</label>
+                    <input type="number" id="prix" name="prix"
+                        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" required>
+                </div>
+                <div class="mb-4">
+                    <label for="poids" class="block text-sm font-medium text-gray-700">Poids du produit :</label>
+                    <input type="number" id="poids" name="poids"
+                        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" required>
+                </div>
+                <div class="mb-4">
+                    <label for="type" class="block text-sm font-medium text-gray-700">Type de produit :</label>
+                    <select id="type" name="type"
+                        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" required>
+                        <option value="alimentaire">Alimentaire</option>
+                        <option value="materiel">Matériel</option>
+                        <option value="chimique">Chimiques</option>
+                    </select>
+                </div>
+                <div id="chimiqueFields" class="mb-4 hidden">
+                    <label for="toxicite" class="block text-sm font-medium text-gray-700">Degré de toxicité :</label>
+                    <input type="text" id="toxicite" name="toxicite"
+                        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                </div>
+                <div id="materielFields" class="mb-4 hidden">
+                    <label for="etat" class="block text-sm font-medium text-gray-700">État du produit :</label>
+                    <select id="etat" name="etat"
+                        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                        <option value="fragile">Fragile</option>
+                        <option value="incassable">Incassable</option>
+                    </select>
+                </div>
+                <button type="button" id="nextToStep2" class="bg-blue-500 text-white p-2 rounded">Suivant</button>
+            </fieldset>
+
+            <!-- Infos du client -->
+            <fieldset id="step2" class="mb-8 hidden">
+                <legend class="text-xl font-semibold mb-4">Infos du client</legend>
+                <div class="mb-4">
+                    <label for="nomClient" class="block text-sm font-medium text-gray-700">Nom :</label>
+                    <input type="text" id="nomClient" name="nomClient"
+                        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" required>
+                </div>
+                <div class="mb-4">
+                    <label for="prenomClient" class="block text-sm font-medium text-gray-700">Prénom :</label>
+                    <input type="text" id="prenomClient" name="prenomClient"
+                        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" required>
+                </div>
+                <div class="mb-4">
+                    <label for="telClient" class="block text-sm font-medium text-gray-700">Téléphone :</label>
+                    <input type="tel" id="telClient" name="telClient"
+                        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" required>
+                </div>
+                <div class="mb-4">
+                    <label for="adresseClient" class="block text-sm font-medium text-gray-700">Adresse :</label>
+                    <input type="text" id="adresseClient" name="adresseClient"
+                        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" required>
+                </div>
+                <div class="mb-4">
+                    <label for="emailClient" class="block text-sm font-medium text-gray-700">Email :</label>
+                    <input type="email" id="emailClient" name="emailClient"
+                        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                </div>
+                <div class="flex justify-between">
+                    <button type="button" id="backToStep1" class="bg-gray-500 text-white p-2 rounded">Retour</button>
+                    <button type="button" id="nextToStep3" class="bg-blue-500 text-white p-2 rounded">Suivant</button>
+                </div>
+            </fieldset>
+
+            <!-- Infos du destinataire -->
+            <fieldset id="step3" class="mb-8 hidden">
+                <legend class="text-xl font-semibold mb-4">Infos du destinataire</legend>
+                <div class="mb-4">
+                    <label for="nomDestinataire" class="block text-sm font-medium text-gray-700">Nom :</label>
+                    <input type="text" id="nomDestinataire" name="nomDestinataire"
+                        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" required>
+                </div>
+                <div class="mb-4">
+                    <label for="prenomDestinataire" class="block text-sm font-medium text-gray-700">Prénom :</label>
+                    <input type="text" id="prenomDestinataire" name="prenomDestinataire"
+                        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" required>
+                </div>
+                <div class="mb-4">
+                    <label for="telDestinataire" class="block text-sm font-medium text-gray-700">Téléphone :</label>
+                    <input type="tel" id="telDestinataire" name="telDestinataire"
+                        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" required>
+                </div>
+                <div class="mb-4">
+                    <label for="adresseDestinataire" class="block text-sm font-medium text-gray-700">Adresse :</label>
+                    <input type="text" id="adresseDestinataire" name="adresseDestinataire"
+                        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" required>
+                </div>
+                <div class="mb-4">
+                    <label for="emailDestinataire" class="block text-sm font-medium text-gray-700">Email :</label>
+                    <input type="email" id="emailDestinataire" name="emailDestinataire"
+                        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                </div>
+                <div class="flex justify-between">
+                    <button type="button" id="backToStep2" class="bg-gray-500 text-white p-2 rounded">Retour</button>
+                    <button type="submit" class="bg-blue-500 text-white p-2 rounded">Ajouter le produit</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <script src="dist/formManager.js"></script>
+    
+</body>
+
+</html>
+
+
+
+<!-- Modal toggle -->
+<button data-modal-target="addProductModal" data-modal-toggle="addProductModal" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
+    Toggle modal
+</button>
+
+<!-- Main modal -->
+<div id="addProductModal" class="fixed inset-0 bg-gray-900 bg-opacity-50 items-center justify-center hidden">
+    <div class="modal-content bg-white p-6 rounded-lg shadow-lg relative w-96">
+        <button class="closeModal absolute top-2 right-2 text-gray-500 hover:text-gray-700">&times;</button>
+        <h1 class="text-2xl font-bold mb-8">Ajouter un Produit</h1>
+        <form id="addProductForm">
+            <!-- Infos du produit -->
+            <fieldset id="step1" class="mb-8">
+                <legend class="text-xl font-semibold mb-4">Infos du produit</legend>
+                <div class="mb-4">
+                    <label for="libelle" class="block text-sm font-medium text-gray-700">Libellé :</label>
+                    <input type="text" id="libelle" name="libelle" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" required>
+                </div>
+                <div class="mb-4">
+                    <label for="prix" class="block text-sm font-medium text-gray-700">Prix du produit :</label>
+                    <input type="number" id="prix" name="prix" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" required>
+                </div>
+                <div class="mb-4">
+                    <label for="poids" class="block text-sm font-medium text-gray-700">Poids du produit :</label>
+                    <input type="number" id="poids" name="poids" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" required>
+                </div>
+                <div class="mb-4">
+                    <label for="type" class="block text-sm font-medium text-gray-700">Type de produit :</label>
+                    <select id="type" name="type" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" required>
+                        <option value="alimentaire">Alimentaire</option>
+                        <option value="materiel">Matériel</option>
+                        <option value="chimique">Chimiques</option>
+                    </select>
+                </div>
+                <div id="chimiqueFields" class="mb-4 hidden">
+                    <label for="toxicite" class="block text-sm font-medium text-gray-700">Degré de toxicité :</label>
+                    <input type="text" id="toxicite" name="toxicite" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                </div>
+                <div id="materielFields" class="mb-4 hidden">
+                    <label for="etat" class="block text-sm font-medium text-gray-700">État du produit :</label>
+                    <select id="etat" name="etat" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                        <option value="fragile">Fragile</option>
+                        <option value="incassable">Incassable</option>
+                    </select>
+                </div>
+                <button type="button" id="nextToStep2" class="bg-blue-500 text-white p-2 rounded">Suivant</button>
+            </fieldset>
+
+            <!-- Infos du destinataire -->
+            <fieldset id="step2" class="mb-8 hidden">
+                <legend class="text-xl font-semibold mb-4">Infos du destinataire</legend>
+                <div class="mb-4">
+                    <label for="nomDestinataire" class="block text-sm font-medium text-gray-700">Nom :</label>
+                    <input type="text" id="nomDestinataire" name="nomDestinataire" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" required>
+                </div>
+                <div class="mb-4">
+                    <label for="prenomDestinataire" class="block text-sm font-medium text-gray-700">Prénom :</label>
+                    <input type="text" id="prenomDestinataire" name="prenomDestinataire" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" required>
+                </div>
+                <div class="mb-4">
+                    <label for="telDestinataire" class="block text-sm font-medium text-gray-700">Téléphone :</label>
+                    <input type="tel" id="telDestinataire" name="telDestinataire" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" required>
+                </div>
+                <div class="mb-4">
+                    <label for="adresseDestinataire" class="block text-sm font-medium text-gray-700">Adresse :</label>
+                    <input type="text" id="adresseDestinataire" name="adresseDestinataire" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" required>
+                </div>
+                <div class="mb-4">
+                    <label for="emailDestinataire" class="block text-sm font-medium text-gray-700">Email :</label>
+                    <input type="email" id="emailDestinataire" name="emailDestinataire" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                </div>
+
+                <div class="flex justify-between">
+                    <button type="button" id="backToStep1" class="bg-gray-500 text-white p-2 rounded">Retour</button>
+                    <button type="button" id="nextToStep3" class="bg-blue-500 text-white p-2 rounded">Suivant</button>
+                </div>
+            </fieldset>
+
+            <!-- Infos du destinataire (identique aux infos du client) -->
+            <fieldset id="step3" class="mb-8 hidden">
+                <legend class="text-xl font-semibold mb-4">Infos du destinataire (identique aux infos du client)</legend>
+                <div class="mb-4">
+                    <label for="nomDestinataire" class="block text-sm font-medium text-gray-700">Nom :</label>
+                    <input type="text" id="nomDestinataire" name="nomDestinataire" class="mt-1 block w-full borderborder border-gray-300 rounded-md shadow-sm p-2" required>
+                </div>
+                <div class="mb-4">
+                    <label for="prenomDestinataire" class="block text-sm font-medium text-gray-700">Prénom :</label>
+                    <input type="text" id="prenomDestinataire" name="prenomDestinataire" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" required>
+                </div>
+                <div class="mb-4">
+                    <label for="telDestinataire" class="block text-sm font-medium text-gray-700">Téléphone :</label>
+                    <input type="tel" id="telDestinataire" name="telDestinataire" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" required>
+                </div>
+                <div class="mb-4">
+                    <label for="adresseDestinataire" class="block text-sm font-medium text-gray-700">Adresse :</label>
+                    <input type="text" id="adresseDestinataire" name="adresseDestinataire" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" required>
+                </div>
+                <div class="mb-4">
+                    <label for="emailDestinataire" class="block text-sm font-medium text-gray-700">Email :</label>
+                    <input type="email" id="emailDestinataire" name="emailDestinataire" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                </div>
+                <div class="flex justify-between">
+                    <button type="button" id="backToStep2" class="bg-gray-500 text-white p-2 rounded">Retour</button>
+                    <button type="submit" id="btnAddProductInsideModal" class="bg-green-500 text-white p-2 rounded">Ajouter le produit</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
